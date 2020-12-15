@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShippingPostCalculator.Models
+﻿namespace ShippingPostCalculator.Models
 {
     /// <summary>
     /// Class to withhold properties of a Parcel that we can use

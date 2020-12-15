@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ShippingPostCalculator
+﻿namespace ShippingPostCalculator
 {
     public class Calculator
     {
