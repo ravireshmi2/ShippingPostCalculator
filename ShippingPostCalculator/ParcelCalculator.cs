@@ -1,6 +1,6 @@
 ﻿namespace ShippingPostCalculator
 {
-    public class Calculator
+    public class ParcelCalculator
     {
     }
 }
