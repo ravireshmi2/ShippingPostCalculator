@@ -1,5 +1,7 @@
 ﻿using ShippingPostCalculator;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ParcelCalculatorApp
 {
@@ -8,27 +10,33 @@ namespace ParcelCalculatorApp
         static void Main(string[] args)
         {
 
-            int sizeOfPkg;
-            //int failedUserAttempts = 0;
-            Console.WriteLine("Please enter size of package (cms) : ");
+            List<Parcel> totalParcelList = new List<Parcel>();
+            Console.WriteLine("Please enter size of package (cms) separated by commas : ");
             var userInput = Console.ReadLine();
-            if (int.TryParse(userInput, out sizeOfPkg))
-            {
-                ParcelCalculator calculator = new ParcelCalculator();
-                Parcel parcelSize = calculator.CalculateCheapestParcelType(sizeOfPkg);
-                Console.WriteLine($"Cheapest parcel size: {parcelSize.Name}");
-                Console.WriteLine($"Cost of parcel: {parcelSize.Cost}");
-            }
-            else
-            {
+            string[] parcelSizes = userInput.Split(",");
+            ParcelCalculator calculator = new ParcelCalculator();
 
-                Console.WriteLine("Invalid user input");
-                //failedUserAttempts += 1; ;
-                //if (failedUserAttempts <= MAX_FAILED_ATTEMPTS)
-                //{
-                //    var userInput = Console.ReadLine();
-                //}
+            for (int i =0; i < parcelSizes.Length; i++)
+            {
+                if (int.TryParse(parcelSizes[i], out int sizeOfPkg))
+                {
+                    totalParcelList.Add(calculator.CalculateCheapestParcelType(sizeOfPkg));
+                }
+                else
+                {
+                    Console.WriteLine($"Invalid output: {parcelSizes[i]}. This is excluded from the total cost.");
+                }
             }
+            
+            PrintOutput(totalParcelList);
+
+           
+        }
+
+        private static void PrintOutput(List<Parcel> totalParcels)
+        {
+            Console.WriteLine("{" + string.Join(", ", totalParcels.Select(parcel => $"{parcel.Name}={parcel.Cost}")) + "}");
+            Console.WriteLine($"Total Cost: {totalParcels.Sum(parcel => parcel.Cost)}");
         }
     }
 }
