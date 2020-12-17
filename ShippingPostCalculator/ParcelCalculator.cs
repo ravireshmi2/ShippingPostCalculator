@@ -2,7 +2,7 @@
 
 namespace ShippingPostCalculator
 {
-    public class ParcelCalculator : BaseCalculator<Parcel>, SpeedyShippingCalculator<Parcel>
+    public class ParcelCalculator : BaseCalculator<Parcel>
     {
       
         public Parcel CalculateCheapestCost(int size)

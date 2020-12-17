@@ -32,7 +32,7 @@ namespace ParcelCalculatorApp
             
             PrintOutput(totalParcelList);
             if(speedyShippingInput.ToLower().Equals("y"))
-                PrintSpeedyShippingOutput(calculator.CalculateSpeedyShippingCost(totalParcelList));
+                PrintSpeedyShippingOutput(totalParcelList.CalculateDoubleParcelCost());
            
         }
 

@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace ShippingPostCalculator
 {
-    interface SpeedyShippingCalculator<T>
+    public static class SpeedyShippingOption
     {
-        double CalculateSpeedyShippingCost(List<T> currentShippingItem);
+        public static double CalculateDoubleParcelCost(this List<Parcel> currentShippingItem)
+        {
+            return currentShippingItem.Sum(x => x.Cost) * 2;
+        }
     }
 }
