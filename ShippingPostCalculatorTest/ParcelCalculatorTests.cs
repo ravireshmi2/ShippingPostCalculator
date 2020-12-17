@@ -14,8 +14,10 @@ namespace ShippingPostCalculatorTest
             int input = 0;
 
             //Act
-            var result = calc.CalculateCheapestParcelType(input);
+            var result = calc.CalculateCheapestCost(input);
 
+            //Assert
+            Assert.IsTrue(result is Parcel);
             Assert.IsTrue(result.Name.Equals(AvailableParcelSizes.SmallParcel.Name));
             Assert.IsTrue(result.Cost.Equals(AvailableParcelSizes.SmallParcel.Cost));
 
@@ -28,8 +30,10 @@ namespace ShippingPostCalculatorTest
             int input = 50;
 
             //Act
-            var result = calc.CalculateCheapestParcelType(input);
+            var result = calc.CalculateCheapestCost(input);
 
+            //Assert
+            Assert.IsTrue(result is Parcel);
             Assert.IsTrue(result.Name.Equals(AvailableParcelSizes.LargeParcel.Name));
             Assert.IsTrue(result.Cost.Equals(AvailableParcelSizes.LargeParcel.Cost));
 
@@ -42,8 +46,10 @@ namespace ShippingPostCalculatorTest
             int input = 49;
 
             //Act
-            var result = calc.CalculateCheapestParcelType(input);
+            var result = calc.CalculateCheapestCost(input);
 
+            //Assert
+            Assert.IsTrue(result is Parcel);
             Assert.IsTrue(result.Name.Equals(AvailableParcelSizes.MediumParcel.Name));
             Assert.IsTrue(result.Cost.Equals(AvailableParcelSizes.MediumParcel.Cost));
 

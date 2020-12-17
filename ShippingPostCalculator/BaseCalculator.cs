@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ShippingPostCalculator
 {
-    interface BaseCalculator
+    interface BaseCalculator<T>
     {
-        Parcel CalculateCheapestParcelType(int size);
+        T CalculateCheapestCost(int size);
     }
 }

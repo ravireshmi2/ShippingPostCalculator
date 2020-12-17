@@ -20,7 +20,7 @@ namespace ParcelCalculatorApp
             {
                 if (int.TryParse(parcelSizes[i], out int sizeOfPkg))
                 {
-                    totalParcelList.Add(calculator.CalculateCheapestParcelType(sizeOfPkg));
+                    totalParcelList.Add(calculator.CalculateCheapestCost(sizeOfPkg));
                 }
                 else
                 {

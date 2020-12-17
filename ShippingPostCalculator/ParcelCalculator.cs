@@ -1,9 +1,11 @@
-﻿namespace ShippingPostCalculator
+﻿using System.Collections.Generic;
+
+namespace ShippingPostCalculator
 {
-    public class ParcelCalculator : BaseCalculator
+    public class ParcelCalculator : BaseCalculator<Parcel>, SpeedyShippingCalculator<Parcel>
     {
        
-        public Parcel CalculateCheapestParcelType(int size)
+        public Parcel CalculateCheapestCost(int size)
         {
             if (size >= AvailableParcelSizes.SmallParcel.MinSize && size < AvailableParcelSizes.SmallParcel.MaxSize)
             {
@@ -22,5 +24,16 @@
                 return AvailableParcelSizes.XLParcel;
             }
         }
+
+        public double CalculateSpeedyShippingCost(List<Parcel> currentShippingItem)
+        {
+            double totalCost = 0;
+            for(int i = 0; i < currentShippingItem.Count; i++)
+            {
+                totalCost += currentShippingItem[i].Cost * 2;
+            }
+            return totalCost;
+        }
+
     }
 }
