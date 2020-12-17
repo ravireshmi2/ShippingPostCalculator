@@ -13,6 +13,8 @@ namespace ParcelCalculatorApp
             List<Parcel> totalParcelList = new List<Parcel>();
             Console.WriteLine("Please enter size of package (cms) separated by commas : ");
             var userInput = Console.ReadLine();
+            Console.WriteLine("Would you like to opt in for speedy shipping? (y/n) : ");
+            var speedyShippingInput = Console.ReadLine();
             string[] parcelSizes = userInput.Split(",");
             ParcelCalculator calculator = new ParcelCalculator();
 
@@ -29,7 +31,8 @@ namespace ParcelCalculatorApp
             }
             
             PrintOutput(totalParcelList);
-
+            if(speedyShippingInput.ToLower().Equals("y"))
+                PrintSpeedyShippingOutput(calculator.CalculateSpeedyShippingCost(totalParcelList));
            
         }
 
@@ -38,5 +41,11 @@ namespace ParcelCalculatorApp
             Console.WriteLine("{" + string.Join(", ", totalParcels.Select(parcel => $"{parcel.Name}={parcel.Cost}")) + "}");
             Console.WriteLine($"Total Cost: {totalParcels.Sum(parcel => parcel.Cost)}");
         }
+        private static void PrintSpeedyShippingOutput(double totalCost)
+        {
+            Console.WriteLine($"Speedy Shipping Cost: {totalCost}");
+
+        }
     }
+
 }
