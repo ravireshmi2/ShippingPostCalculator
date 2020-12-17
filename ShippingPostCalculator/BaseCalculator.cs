@@ -9,5 +9,7 @@ namespace ShippingPostCalculator
     interface BaseCalculator<T>
     {
         T CalculateCheapestCost(int size);
+        List<T> CalculateCheapestCostForListOfInputs(List<int> sizes);
+
     }
 }

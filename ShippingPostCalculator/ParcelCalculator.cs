@@ -2,7 +2,7 @@
 
 namespace ShippingPostCalculator
 {
-    public class ParcelCalculator : BaseCalculator<Parcel>, SpeedyShippingCalculator<Parcel>
+    public class ParcelCalculator : BaseCalculator<Parcel>
     {
        
         public Parcel CalculateCheapestCost(int size)
@@ -25,15 +25,16 @@ namespace ShippingPostCalculator
             }
         }
 
-        public double CalculateSpeedyShippingCost(List<Parcel> currentShippingItem)
+        public List<Parcel> CalculateCheapestCostForListOfInputs (List<int> sizesList)
         {
-            double totalCost = 0;
-            for(int i = 0; i < currentShippingItem.Count; i++)
-            {
-                totalCost += currentShippingItem[i].Cost * 2;
+            List<Parcel> parcelsOutput = new List<Parcel>();
+            for (int i = 0; i< sizesList.Count; i++){
+                parcelsOutput.Add(CalculateCheapestCost(sizesList[i]));
             }
-            return totalCost;
+            return parcelsOutput;
         }
+
+        
 
     }
 }
