@@ -11,7 +11,7 @@ namespace ShippingPostCalculator
             {
                 return AvailableParcelSizes.SmallParcel;
             }
-            else if (size >= AvailableParcelSizes.MediumParcel.MinSize && size < AvailableParcelSizes.MediumParcel.MaxSize)
+            else if (size >= AvailableParcelSizes.SmallParcel.MinSize && size < AvailableParcelSizes.MediumParcel.MaxSize)
             {
                 return AvailableParcelSizes.MediumParcel;
             }
