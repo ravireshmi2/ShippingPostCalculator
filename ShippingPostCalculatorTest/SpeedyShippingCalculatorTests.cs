@@ -6,10 +6,10 @@ using System.Linq;
 namespace ShippingPostCalculatorTest
 {
     [TestClass]
-    class SpeedyShippingCalculatorTests
+    public class SpeedyShippingCalculatorTests
     {
         [TestMethod]
-        public void WhenIPassInOneParcel_CostShouldBeDoubled()
+        public void WhenIPassInOneParcel_ExpectedSpeedyShippingCostShouldBeDoubled()
         {
             //Arrange
             List<Parcel> parcelInput = new List<Parcel>();
@@ -25,13 +25,31 @@ namespace ShippingPostCalculatorTest
         }
 
         [TestMethod]
-        public void WhenIPassInListOfParcela_CostShouldBeDoubled()
+        public void WhenIPassInListOfParcela_ExpectedSpeedyShippingCostShouldBeDoubled()
         {
             //Arrange
             List<Parcel> parcelInput = new List<Parcel>();
             parcelInput.Add(new Parcel("A", 2, 5));
-            parcelInput.Add(new Parcel("A", 10, 5));
-            parcelInput.Add(new Parcel("A", 8, 5));
+            parcelInput.Add(new Parcel("B", 10, 15));
+            parcelInput.Add(new Parcel("C", 8, 25));
+
+
+            //Act
+            var result = parcelInput.CalculateDoubleParcelCost();
+            var expectedOutput = parcelInput.Sum(x => x.Cost) * 2;
+
+            //Assert
+            Assert.AreEqual(expectedOutput, result);
+
+        }
+        [TestMethod]
+        public void WhenIPassInListOfParcelsWithCostAs0_ExpectedSpeedyShippingCostShouldBe0()
+        {
+            //Arrange
+            List<Parcel> parcelInput = new List<Parcel>();
+            parcelInput.Add(new Parcel("A", 0, 5));
+            parcelInput.Add(new Parcel("B", 0, 15));
+
 
 
             //Act
